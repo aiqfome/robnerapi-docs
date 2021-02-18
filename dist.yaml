@@ -29,6 +29,7 @@ paths:
         RideCreated:
           YOUR_CALLBACK_URL:
             post:
+              summary: RideCreatedWebhook
               parameters:
                 - in: header
                   schema:
@@ -52,6 +53,7 @@ paths:
         RideStepCompleted:
           YOUR_CALLBACK_URL:
             post:
+              summary: RideStepCompletedWebhook
               parameters:
                 - in: header
                   schema:
@@ -71,6 +73,7 @@ paths:
         RideOrderDelivered:
           YOUR_CALLBACK_URL:
             post:
+              summary: RideOrderDeliveredWebhook
               parameters:
                 - in: header
                   schema:
@@ -313,6 +316,7 @@ paths:
         RideCancelled:
           YOUR_CALLBACK_URL:
             post:
+              summary: RideCancelledWebhook
               parameters:
                 - in: header
                   schema:
@@ -332,6 +336,7 @@ paths:
         RideRecreated:
           YOUR_CALLBACK_URL:
             post:
+              summary: RideRecreatedWebhook
               parameters:
                 - in: header
                   schema:
@@ -340,7 +345,7 @@ paths:
                   description: Webhook Signature
                   required: true
               requestBody:
-                description: Webhook for ride created
+                description: Webhook for ride recreated
                 content:
                   application/json:
                     schema:
