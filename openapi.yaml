@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '1.0'
+  version: '1.0-alpha'
   title: robnerAPI
   description: |
     **robnerAPI is provided by aiq. for utilizing aiqentrega services.**
