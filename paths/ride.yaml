@@ -8,6 +8,7 @@ post:
     RideCreated:
       YOUR_CALLBACK_URL:
         post:
+          summary: RideCreatedWebhook
           parameters:
             - in: header
               schema:
@@ -31,6 +32,7 @@ post:
     RideStepCompleted:
       YOUR_CALLBACK_URL:
         post:
+          summary: RideStepCompletedWebhook
           parameters:
             - in: header
               schema:
@@ -50,6 +52,7 @@ post:
     RideOrderDelivered:
       YOUR_CALLBACK_URL:
         post:
+          summary: RideOrderDeliveredWebhook
           parameters:
             - in: header
               schema:

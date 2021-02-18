@@ -13,6 +13,7 @@ post:
     RideCancelled:
       YOUR_CALLBACK_URL:
         post:
+          summary: RideCancelledWebhook
           parameters:
             - in: header
               schema:
@@ -32,6 +33,7 @@ post:
     RideRecreated:
       YOUR_CALLBACK_URL:
         post:
+          summary: RideRecreatedWebhook
           parameters:
             - in: header
               schema:
@@ -40,7 +42,7 @@ post:
               description: Webhook Signature
               required: true
           requestBody:
-            description: Webhook for ride created
+            description: Webhook for ride recreated
             content:
               application/json:
                 schema:
