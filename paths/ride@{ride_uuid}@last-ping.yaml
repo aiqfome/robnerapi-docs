@@ -1,0 +1,77 @@
+get:
+  summary: Get ride last ping
+  parameters:
+    - name: ride_uuid
+      in: path
+      required: true
+      schema:
+        type: string
+  tags:
+    - Ride
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    uuid:
+                      type: string
+                    busy:
+                      type: boolean
+                    position:
+                      type: object
+                      properties:
+                        latitude:
+                          type: number
+                        longitude:
+                          type: number
+                        time:
+                          type: integer
+                        velocity_in_kilometers_per_hour:
+                          type: number
+            example:
+              success: true
+              data:
+                - busy: false
+                  position:
+                    latitude: -23.1234567
+                    longitude: -51.1234567
+                    time: 1611748270
+                    velocity_in_kilometers_per_hour: 3.01
+                    uuid: 2c512330-91f6-11eb-a582-062g69a28ac5
+                - busy: false
+                  position:
+                    latitude: -23.1234567
+                    longitude: -51.1234567
+                    time: 1611748265
+                    velocity_in_kilometers_per_hour: 0.23
+                    uuid: 1c9e1235-4455-11ab-a582-062d69a28ac5
+    '204':
+      description: No Content
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnauthorized.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnprocessableEntity.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorInternalServerError.yaml

@@ -1,0 +1,440 @@
+type: object
+properties:
+  event:
+    type: string
+  data:
+    type: object
+    properties:
+      ride:
+        type: object
+        properties:
+          data:
+            type: object
+            properties:
+              uuid:
+                type: string
+              should_return_to_customer:
+                type: boolean
+              created_at:
+                type: string
+              accepted_at:
+                type: string
+              driver_credit:
+                type: number
+              owner_debit:
+                type: number
+              current_status:
+                type: string
+              current_step:
+                type: string
+              country:
+                type: string
+              customer:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  phones:
+                    type: string
+                  city_id:
+                    type: integer
+                  country_id:
+                    type: integer
+                  address:
+                    type: object
+                    properties:
+                      street:
+                        type: string
+                      postal_code:
+                        type: string
+                      number:
+                        type: string
+                      complement:
+                        type: string
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
+                      reference:
+                        type: string
+                      neighborhood:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          city:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              region:
+                                type: object
+                                properties:
+                                  name:
+                                    type: string
+                                required:
+                                  - name
+                            required:
+                              - name
+                              - region
+                        required:
+                          - name
+                          - city
+                    required:
+                      - street
+                      - postal_code
+                      - number
+                      - complement
+                      - latitude
+                      - longitude
+                      - reference
+                      - neighborhood
+                required:
+                  - id
+                  - name
+                  - phones
+                  - city_id
+                  - country_id
+                  - address
+              orders:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    uuid:
+                      type: string
+                    items:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          size:
+                            type: string
+                          quantity:
+                            type: integer
+                        required:
+                          - name
+                          - size
+                          - quantity
+                    obs:
+                      type: string
+                    amount:
+                      type: integer
+                    external_order_number:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    deleted_at:
+                      type: string
+                    destination:
+                      type: object
+                      properties:
+                        has_phone:
+                          type: boolean
+                        name:
+                          type: string
+                        phones:
+                          type: string
+                        address:
+                          type: object
+                          properties:
+                            street:
+                              type: string
+                            postal_code:
+                              type: string
+                            number:
+                              type: string
+                            complement:
+                              type: string
+                            latitude:
+                              type: number
+                            longitude:
+                              type: number
+                            reference:
+                              type: string
+                            neighborhood:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                city:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    region:
+                                      type: object
+                                      properties:
+                                        name:
+                                          type: string
+                                      required:
+                                        - name
+                                  required:
+                                    - name
+                                    - region
+                              required:
+                                - name
+                                - city
+                          required:
+                            - street
+                            - postal_code
+                            - number
+                            - complement
+                            - latitude
+                            - longitude
+                            - reference
+                            - neighborhood
+                      required:
+                        - has_phone
+                        - name
+                        - phones
+                        - address
+                    payment_method:
+                      type: integer
+                    change:
+                      type: integer
+                    status:
+                      type: integer
+                  required:
+                    - id
+                    - uuid
+                    - items
+                    - obs
+                    - amount
+                    - external_order_number
+                    - created_at
+                    - updated_at
+                    - deleted_at
+                    - destination
+                    - payment_method
+                    - change
+                    - status
+            required:
+              - uuid
+              - should_return_to_customer
+              - created_at
+              - accepted_at
+              - driver_credit
+              - owner_debit
+              - current_status
+              - current_step
+              - country
+              - customer
+              - orders
+        required:
+          - data
+      ride_step:
+        type: object
+        properties:
+          id:
+            type: integer
+          ride_id:
+            type: integer
+          step_id:
+            type: integer
+          latitude:
+            type: number
+          longitude:
+            type: number
+          time:
+            type: string
+          inside_geofence_radius:
+            type: boolean
+          updated_at:
+            type: string
+          created_at:
+            type: string
+        required:
+          - id
+          - ride_id
+          - step_id
+          - latitude
+          - longitude
+          - time
+          - inside_geofence_radius
+          - updated_at
+          - created_at
+      order:
+        type: object
+        properties:
+          id:
+            type: integer
+          uuid:
+            type: string
+          items:
+            type: array
+            items:
+              type: object
+              properties:
+                name:
+                  type: string
+                size:
+                  type: string
+                quantity:
+                  type: integer
+              required:
+                - name
+                - size
+                - quantity
+          obs:
+            type: string
+          amount:
+            type: integer
+          external_order_number:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          deleted_at:
+            type: string
+          destination_id:
+            type: integer
+          local_payment_id:
+            type: integer
+          ride_id:
+            type: integer
+          delivered_ride_step_id:
+            type: integer
+        required:
+          - id
+          - uuid
+          - items
+          - obs
+          - amount
+          - external_order_number
+          - created_at
+          - updated_at
+          - deleted_at
+          - destination_id
+          - local_payment_id
+          - ride_id
+          - delivered_ride_step_id
+    required:
+      - ride
+      - ride_step
+      - order
+required:
+  - event
+  - data
+example:
+  event: RideOrderDelivered
+  data:
+    ride:
+      data:
+        uuid: a41234d-6d75-11eb-a400-06f3f99250a0
+        should_return_to_customer: true
+        created_at: '2021-02-12T21:02:39.000Z'
+        accepted_at: '2021-02-12T21:02:47.000Z'
+        driver_credit: 8.77
+        owner_debit: 8.77
+        current_status: returning
+        current_step: returning
+        country: BR
+        customer:
+          id: 7
+          name: CASA JORGE
+          phones: '(44) 3212-3333,'
+          city_id: 2994
+          country_id: 1
+          address:
+            street: R. FRANCISCO GLICËRIO
+            postal_code: '81234567'
+            number: '1227'
+            complement: null
+            latitude: -23.123456
+            longitude: -51.12345
+            reference: null
+            neighborhood:
+              name: ZONA 7
+              city:
+                name: MARINGÁ
+                region:
+                  name: BR.PR
+        orders:
+          - id: 2463
+            uuid: a1234505-6d75-11eb-a400-06f3f99250a0
+            items:
+              - name: TESTE
+                size: P
+                quantity: 32
+              - name: TESTE
+                size: P
+                quantity: 32
+              - name: TESTE
+                size: P
+                quantity: 32
+              - name: TESTE
+                size: P
+                quantity: 32
+            obs: Interfono no hablas
+            amount: 50
+            external_order_number: '1231231'
+            created_at: '2021-02-12T21:02:40.000Z'
+            updated_at: '2021-02-12T21:03:00.000Z'
+            deleted_at: null
+            destination:
+              has_phone: true
+              name: Gianluca Bine
+              phones: 42 991041234
+              address:
+                street: AVENIDA HORACIO RACANELLO FILHO
+                postal_code: 87125-1234
+                number: '6090'
+                complement: ''
+                latitude: -23.1234
+                longitude: -51.123456
+                reference: ''
+                neighborhood:
+                  name: NOVO CENTRO
+                  city:
+                    name: MARINGÁ
+                    region:
+                      name: BR.PR
+            payment_method: 2
+            change: 0
+            status: 2
+    ride_step:
+      id: 7743
+      ride_id: 2076
+      step_id: 4
+      latitude: -23.1234
+      longitude: -51.123455
+      time: '2021-02-12T21:03:02.000Z'
+      inside_geofence_radius: true
+      updated_at: '2021-02-12T21:03:00.432Z'
+      created_at: '2021-02-12T21:03:00.432Z'
+    order:
+      id: 2463
+      uuid: a44e1405-6d75-11eb-a400-06f3f99250a0
+      items:
+        - name: TESTE
+          size: P
+          quantity: 32
+        - name: TESTE
+          size: P
+          quantity: 32
+        - name: TESTE
+          size: P
+          quantity: 32
+        - name: TESTE
+          size: P
+          quantity: 32
+      obs: Interfono no hablas
+      amount: 50
+      external_order_number: '1231231'
+      created_at: '2021-02-12T21:02:40.000Z'
+      updated_at: '2021-02-12T21:03:00.000Z'
+      deleted_at: null
+      destination_id: 2468
+      local_payment_id: 1752
+      ride_id: 2076
+      delivered_ride_step_id: 7743

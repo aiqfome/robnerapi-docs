@@ -1,0 +1,114 @@
+delete:
+  summary: Delete a customer
+  parameters:
+    - in: header
+      name: Host
+      description: aiqentrega-register.aiqfome.com
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: customer_uuid
+      required: true
+      schema:
+        type: string
+  tags:
+    - Customer
+  responses:
+    '200':
+      description: Customer successfully deleted
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  phones:
+                    type: string
+                  document_number:
+                    type: string
+                  city_id:
+                    type: integer
+                  address_id:
+                    type: integer
+                  country_id:
+                    type: integer
+                  percentual_tax:
+                    type: number
+                  fixed_amount_tax:
+                    type: integer
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  deleted_at:
+                    nullable: true
+                required:
+                  - id
+                  - name
+                  - phones
+                  - document_number
+                  - city_id
+                  - address_id
+                  - country_id
+                  - percentual_tax
+                  - fixed_amount_tax
+                  - created_at
+                  - updated_at
+                  - deleted_at
+            required:
+              - success
+              - data
+            example:
+              data:
+                address_id: 12
+                city_id: 1
+                country_id: 1
+                created_at: '2020-04-06T11:41:01.000000Z'
+                deleted_at: null
+                document_number: '06604325000160'
+                fixed_amount_tax: 5
+                id: 5
+                name: Restaurante Exemplo
+                percentual_tax: 0.05
+                phones: '+5542991044321, +554236238320'
+                updated_at: '2020-04-06T14:41:50.000000Z'
+              success: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnauthorized.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorNotFound.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnprocessableEntity.yaml
+    '429':
+      description: Too many requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorTooManyRequests.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorInternalServerError.yaml

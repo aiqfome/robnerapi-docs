@@ -1,0 +1,1026 @@
+post:
+  summary: Create a customer
+  parameters:
+    - in: header
+      name: Host
+      description: aiqentrega-register.aiqfome.com
+      required: true
+      schema:
+        type: string
+  tags:
+    - Customer
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            phones:
+              type: string
+            document_number:
+              type: string
+            address:
+              type: object
+              properties:
+                street:
+                  type: string
+                postal_code:
+                  type: string
+                number:
+                  type: string
+                complement:
+                  type: string
+                reference:
+                  type: string
+                neighborhood:
+                  type: string
+                city:
+                  type: string
+                region:
+                  type: string
+            country:
+              type: string
+          example:
+            address:
+              city: MARINGÁ
+              complement: sala 400
+              neighborhood: ZONA 7
+              number: '835'
+              postal_code: '87020220'
+              reference: Teste
+              region: BR.PR
+              street: RUA BAHIA
+            country: BR
+            document_number: '06604325000160'
+            name: Restaurante Exemplo 1
+  responses:
+    '201':
+      description: Customer successfully created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              data:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  phones:
+                    type: string
+                  document_number:
+                    type: string
+                  percentual_tax:
+                    type: number
+                  fixed_amount_tax:
+                    type: integer
+                  address_id:
+                    type: integer
+                  country_id:
+                    type: integer
+                  city_id:
+                    type: integer
+                  updated_at:
+                    type: string
+                  created_at:
+                    type: string
+                  id:
+                    type: integer
+                  address:
+                    type: object
+                    properties:
+                      street:
+                        type: string
+                      postal_code:
+                        type: string
+                      number:
+                        type: string
+                      complement:
+                        type: string
+                      reference:
+                        type: string
+                      neighborhood_id:
+                        type: integer
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
+                      id:
+                        type: integer
+                      neighborhood:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          city_id:
+                            type: integer
+                          city:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              name:
+                                type: string
+                              region_id:
+                                type: integer
+                              owner_id:
+                                type: integer
+                              population:
+                                nullable: true
+                              area:
+                                nullable: true
+                              created_at:
+                                type: string
+                              updated_at:
+                                nullable: true
+                              deleted_at:
+                                nullable: true
+                              region:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  name:
+                                    type: string
+                                  hasc:
+                                    type: string
+                                  country_id:
+                                    type: integer
+                                  country:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: integer
+                                      name:
+                                        type: string
+                                      iso_code_alpha_2:
+                                        type: string
+                                      language:
+                                        type: string
+                                      currency_name:
+                                        type: string
+                                      currency_symbol:
+                                        type: string
+                                      currency_iso_code:
+                                        type: string
+                                      idd:
+                                        type: string
+                                      format_date:
+                                        nullable: true
+                                      format_hour:
+                                        nullable: true
+                                      phone_mask:
+                                        nullable: true
+                                      document_type:
+                                        type: string
+                                      driver_license_type:
+                                        type: string
+                                    required:
+                                      - id
+                                      - name
+                                      - iso_code_alpha_2
+                                      - language
+                                      - currency_name
+                                      - currency_symbol
+                                      - currency_iso_code
+                                      - idd
+                                      - format_date
+                                      - format_hour
+                                      - phone_mask
+                                      - document_type
+                                      - driver_license_type
+                                required:
+                                  - id
+                                  - name
+                                  - hasc
+                                  - country_id
+                                  - country
+                            required:
+                              - id
+                              - name
+                              - region_id
+                              - owner_id
+                              - population
+                              - area
+                              - created_at
+                              - updated_at
+                              - deleted_at
+                              - region
+                        required:
+                          - id
+                          - name
+                          - city_id
+                          - city
+                    required:
+                      - street
+                      - postal_code
+                      - number
+                      - complement
+                      - reference
+                      - neighborhood_id
+                      - latitude
+                      - longitude
+                      - id
+                      - neighborhood
+                  country:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      iso_code_alpha_2:
+                        type: string
+                      language:
+                        type: string
+                      currency_name:
+                        type: string
+                      currency_symbol:
+                        type: string
+                      currency_iso_code:
+                        type: string
+                      idd:
+                        type: string
+                      format_date:
+                        nullable: true
+                      format_hour:
+                        nullable: true
+                      phone_mask:
+                        nullable: true
+                      document_type:
+                        type: string
+                      driver_license_type:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - iso_code_alpha_2
+                      - language
+                      - currency_name
+                      - currency_symbol
+                      - currency_iso_code
+                      - idd
+                      - format_date
+                      - format_hour
+                      - phone_mask
+                      - document_type
+                      - driver_license_type
+                  city:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      region_id:
+                        type: integer
+                      owner_id:
+                        type: integer
+                      population:
+                        nullable: true
+                      area:
+                        nullable: true
+                      created_at:
+                        type: string
+                      updated_at:
+                        nullable: true
+                      deleted_at:
+                        nullable: true
+                      region:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          hasc:
+                            type: string
+                          country_id:
+                            type: integer
+                          country:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              name:
+                                type: string
+                              iso_code_alpha_2:
+                                type: string
+                              language:
+                                type: string
+                              currency_name:
+                                type: string
+                              currency_symbol:
+                                type: string
+                              currency_iso_code:
+                                type: string
+                              idd:
+                                type: string
+                              format_date:
+                                nullable: true
+                              format_hour:
+                                nullable: true
+                              phone_mask:
+                                nullable: true
+                              document_type:
+                                type: string
+                              driver_license_type:
+                                type: string
+                            required:
+                              - id
+                              - name
+                              - iso_code_alpha_2
+                              - language
+                              - currency_name
+                              - currency_symbol
+                              - currency_iso_code
+                              - idd
+                              - format_date
+                              - format_hour
+                              - phone_mask
+                              - document_type
+                              - driver_license_type
+                        required:
+                          - id
+                          - name
+                          - hasc
+                          - country_id
+                          - country
+                    required:
+                      - id
+                      - name
+                      - region_id
+                      - owner_id
+                      - population
+                      - area
+                      - created_at
+                      - updated_at
+                      - deleted_at
+                      - region
+                required:
+                  - name
+                  - phones
+                  - document_number
+                  - percentual_tax
+                  - fixed_amount_tax
+                  - address_id
+                  - country_id
+                  - city_id
+                  - updated_at
+                  - created_at
+                  - id
+                  - address
+                  - country
+                  - city
+            required:
+              - success
+              - data
+            example:
+              data:
+                address:
+                  complement: apt 603
+                  id: 15
+                  latitude: -23.4070276
+                  longitude: -51.9417363
+                  neighborhood:
+                    city:
+                      area: null
+                      created_at: '2020-04-03T19:56:02.000000Z'
+                      deleted_at: null
+                      id: 1
+                      name: MARINGÁ
+                      owner_id: 1
+                      population: null
+                      region:
+                        country:
+                          currency_iso_code: BRL
+                          currency_name: REAL
+                          currency_symbol: R$
+                          document_type: CPF
+                          driver_license_type: CNH
+                          format_date: null
+                          format_hour: null
+                          id: 1
+                          idd: '55'
+                          iso_code_alpha_2: BR
+                          language: pt-BR
+                          name: Brasil
+                          phone_mask: null
+                        country_id: 1
+                        hasc: BR.PR
+                        id: 1
+                        name: Paraná
+                      region_id: 1
+                      updated_at: null
+                    city_id: 1
+                    id: 1
+                    name: ZONA 7
+                  neighborhood_id: 1
+                  number: '835'
+                  postal_code: '87020220'
+                  reference: Teste
+                  street: RUA BRAGANÇA
+                address_id: 15
+                city:
+                  area: null
+                  created_at: '2020-04-03T19:56:02.000000Z'
+                  deleted_at: null
+                  id: 1
+                  name: MARINGÁ
+                  owner_id: 1
+                  population: null
+                  region:
+                    country:
+                      currency_iso_code: BRL
+                      currency_name: REAL
+                      currency_symbol: R$
+                      document_type: CPF
+                      driver_license_type: CNH
+                      format_date: null
+                      format_hour: null
+                      id: 1
+                      idd: '55'
+                      iso_code_alpha_2: BR
+                      language: pt-BR
+                      name: Brasil
+                      phone_mask: null
+                    country_id: 1
+                    hasc: BR.PR
+                    id: 1
+                    name: Paraná
+                  region_id: 1
+                  updated_at: null
+                city_id: 1
+                country:
+                  currency_iso_code: BRL
+                  currency_name: REAL
+                  currency_symbol: R$
+                  document_type: CPF
+                  driver_license_type: CNH
+                  format_date: null
+                  format_hour: null
+                  id: 1
+                  idd: '55'
+                  iso_code_alpha_2: BR
+                  language: pt-BR
+                  name: Brasil
+                  phone_mask: null
+                country_id: 1
+                created_at: '2020-04-06T13:07:50.000000Z'
+                document_number: '06604325000160'
+                fixed_amount_tax: 5
+                id: 8
+                name: Restaurante Exemplo 2
+                percentual_tax: 0.05
+                phones: '+5542991044321,+554236238320'
+                updated_at: '2020-04-06T13:07:50.000000Z'
+              success: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnauthorized.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorNotFound.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnprocessableEntity.yaml
+    '429':
+      description: Too many requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorTooManyRequests.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorInternalServerError.yaml
+put:
+  summary: Update a customer
+  parameters:
+    - in: header
+      name: Host
+      description: aiqentrega-register.aiqfome.com
+      required: true
+      schema:
+        type: string
+  tags:
+    - Customer
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            phones:
+              type: string
+            document_number:
+              type: string
+            address:
+              type: object
+              properties:
+                street:
+                  type: string
+                postal_code:
+                  type: string
+                number:
+                  type: string
+                complement:
+                  type: string
+                reference:
+                  type: string
+                neighborhood:
+                  type: string
+                city:
+                  type: string
+                region:
+                  type: string
+            country:
+              type: string
+          example:
+            address:
+              city: MARINGÁ
+              complement: sala 502
+              neighborhood: ZONA 7
+              number: '123'
+              postal_code: '87020220'
+              reference: Teste
+              region: BR.PR
+              street: RUA PARANAGUA
+            country: BR
+            document_number: '06604325000160'
+            name: Restaurante Exemplo 2
+  responses:
+    '200':
+      description: Customer successfully updated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              data:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  phones:
+                    type: string
+                  document_number:
+                    type: string
+                  percentual_tax:
+                    type: number
+                  fixed_amount_tax:
+                    type: integer
+                  address_id:
+                    type: integer
+                  country_id:
+                    type: integer
+                  city_id:
+                    type: integer
+                  updated_at:
+                    type: string
+                  created_at:
+                    type: string
+                  id:
+                    type: integer
+                  address:
+                    type: object
+                    properties:
+                      street:
+                        type: string
+                      postal_code:
+                        type: string
+                      number:
+                        type: string
+                      complement:
+                        type: string
+                      reference:
+                        type: string
+                      neighborhood_id:
+                        type: integer
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
+                      id:
+                        type: integer
+                      neighborhood:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          city_id:
+                            type: integer
+                          city:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              name:
+                                type: string
+                              region_id:
+                                type: integer
+                              owner_id:
+                                type: integer
+                              population:
+                                nullable: true
+                              area:
+                                nullable: true
+                              created_at:
+                                type: string
+                              updated_at:
+                                nullable: true
+                              deleted_at:
+                                nullable: true
+                              region:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  name:
+                                    type: string
+                                  hasc:
+                                    type: string
+                                  country_id:
+                                    type: integer
+                                  country:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: integer
+                                      name:
+                                        type: string
+                                      iso_code_alpha_2:
+                                        type: string
+                                      language:
+                                        type: string
+                                      currency_name:
+                                        type: string
+                                      currency_symbol:
+                                        type: string
+                                      currency_iso_code:
+                                        type: string
+                                      idd:
+                                        type: string
+                                      format_date:
+                                        nullable: true
+                                      format_hour:
+                                        nullable: true
+                                      phone_mask:
+                                        nullable: true
+                                      document_type:
+                                        type: string
+                                      driver_license_type:
+                                        type: string
+                                    required:
+                                      - id
+                                      - name
+                                      - iso_code_alpha_2
+                                      - language
+                                      - currency_name
+                                      - currency_symbol
+                                      - currency_iso_code
+                                      - idd
+                                      - format_date
+                                      - format_hour
+                                      - phone_mask
+                                      - document_type
+                                      - driver_license_type
+                                required:
+                                  - id
+                                  - name
+                                  - hasc
+                                  - country_id
+                                  - country
+                            required:
+                              - id
+                              - name
+                              - region_id
+                              - owner_id
+                              - population
+                              - area
+                              - created_at
+                              - updated_at
+                              - deleted_at
+                              - region
+                        required:
+                          - id
+                          - name
+                          - city_id
+                          - city
+                    required:
+                      - street
+                      - postal_code
+                      - number
+                      - complement
+                      - reference
+                      - neighborhood_id
+                      - latitude
+                      - longitude
+                      - id
+                      - neighborhood
+                  country:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      iso_code_alpha_2:
+                        type: string
+                      language:
+                        type: string
+                      currency_name:
+                        type: string
+                      currency_symbol:
+                        type: string
+                      currency_iso_code:
+                        type: string
+                      idd:
+                        type: string
+                      format_date:
+                        nullable: true
+                      format_hour:
+                        nullable: true
+                      phone_mask:
+                        nullable: true
+                      document_type:
+                        type: string
+                      driver_license_type:
+                        type: string
+                    required:
+                      - id
+                      - name
+                      - iso_code_alpha_2
+                      - language
+                      - currency_name
+                      - currency_symbol
+                      - currency_iso_code
+                      - idd
+                      - format_date
+                      - format_hour
+                      - phone_mask
+                      - document_type
+                      - driver_license_type
+                  city:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      region_id:
+                        type: integer
+                      owner_id:
+                        type: integer
+                      population:
+                        nullable: true
+                      area:
+                        nullable: true
+                      created_at:
+                        type: string
+                      updated_at:
+                        nullable: true
+                      deleted_at:
+                        nullable: true
+                      region:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          hasc:
+                            type: string
+                          country_id:
+                            type: integer
+                          country:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              name:
+                                type: string
+                              iso_code_alpha_2:
+                                type: string
+                              language:
+                                type: string
+                              currency_name:
+                                type: string
+                              currency_symbol:
+                                type: string
+                              currency_iso_code:
+                                type: string
+                              idd:
+                                type: string
+                              format_date:
+                                nullable: true
+                              format_hour:
+                                nullable: true
+                              phone_mask:
+                                nullable: true
+                              document_type:
+                                type: string
+                              driver_license_type:
+                                type: string
+                            required:
+                              - id
+                              - name
+                              - iso_code_alpha_2
+                              - language
+                              - currency_name
+                              - currency_symbol
+                              - currency_iso_code
+                              - idd
+                              - format_date
+                              - format_hour
+                              - phone_mask
+                              - document_type
+                              - driver_license_type
+                        required:
+                          - id
+                          - name
+                          - hasc
+                          - country_id
+                          - country
+                    required:
+                      - id
+                      - name
+                      - region_id
+                      - owner_id
+                      - population
+                      - area
+                      - created_at
+                      - updated_at
+                      - deleted_at
+                      - region
+                required:
+                  - name
+                  - phones
+                  - document_number
+                  - percentual_tax
+                  - fixed_amount_tax
+                  - address_id
+                  - country_id
+                  - city_id
+                  - updated_at
+                  - created_at
+                  - id
+                  - address
+                  - country
+                  - city
+            required:
+              - success
+              - data
+            example:
+              data:
+                address:
+                  complement: apt 603
+                  id: 15
+                  latitude: -23.4070276
+                  longitude: -51.9417363
+                  neighborhood:
+                    city:
+                      area: null
+                      created_at: '2020-04-03T19:56:02.000000Z'
+                      deleted_at: null
+                      id: 1
+                      name: MARINGÁ
+                      owner_id: 1
+                      population: null
+                      region:
+                        country:
+                          currency_iso_code: BRL
+                          currency_name: REAL
+                          currency_symbol: R$
+                          document_type: CPF
+                          driver_license_type: CNH
+                          format_date: null
+                          format_hour: null
+                          id: 1
+                          idd: '55'
+                          iso_code_alpha_2: BR
+                          language: pt-BR
+                          name: Brasil
+                          phone_mask: null
+                        country_id: 1
+                        hasc: BR.PR
+                        id: 1
+                        name: Paraná
+                      region_id: 1
+                      updated_at: null
+                    city_id: 1
+                    id: 1
+                    name: ZONA 7
+                  neighborhood_id: 1
+                  number: '835'
+                  postal_code: '87020220'
+                  reference: Teste
+                  street: RUA BRAGANÇA
+                address_id: 15
+                city:
+                  area: null
+                  created_at: '2020-04-03T19:56:02.000000Z'
+                  deleted_at: null
+                  id: 1
+                  name: MARINGÁ
+                  owner_id: 1
+                  population: null
+                  region:
+                    country:
+                      currency_iso_code: BRL
+                      currency_name: REAL
+                      currency_symbol: R$
+                      document_type: CPF
+                      driver_license_type: CNH
+                      format_date: null
+                      format_hour: null
+                      id: 1
+                      idd: '55'
+                      iso_code_alpha_2: BR
+                      language: pt-BR
+                      name: Brasil
+                      phone_mask: null
+                    country_id: 1
+                    hasc: BR.PR
+                    id: 1
+                    name: Paraná
+                  region_id: 1
+                  updated_at: null
+                city_id: 1
+                country:
+                  currency_iso_code: BRL
+                  currency_name: REAL
+                  currency_symbol: R$
+                  document_type: CPF
+                  driver_license_type: CNH
+                  format_date: null
+                  format_hour: null
+                  id: 1
+                  idd: '55'
+                  iso_code_alpha_2: BR
+                  language: pt-BR
+                  name: Brasil
+                  phone_mask: null
+                country_id: 1
+                created_at: '2020-04-06T13:07:50.000000Z'
+                document_number: '06604325000160'
+                fixed_amount_tax: 5
+                id: 8
+                name: Restaurante Exemplo 2
+                percentual_tax: 0.05
+                phones: '+5542991044321,+554236238320'
+                updated_at: '2020-04-06T13:07:50.000000Z'
+              success: true
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnauthorized.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorNotFound.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnprocessableEntity.yaml
+    '429':
+      description: Too many requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorTooManyRequests.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorInternalServerError.yaml

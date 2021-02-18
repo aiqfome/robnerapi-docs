@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: robnerAPI
+  description: |
+    **robnerAPI is provided by aiq. for utilizing aiqentrega services.**
+
+    ___
+    ## Basic Auth
+    #### How to get your Basic Authentication
+    - Please contact our support.
+    ## Webhooks Signature
+    #### How to get Signature for subscribing to webhooks.
+     - Please contact our support.
+  license:
+    name: MIT
+    url: 'https://robner.aiqfome.com/docs'
+security:
+  - basicAuth: []
+paths:
+  /ride:
+    $ref: paths/ride.yaml
+  '/ride/{ride_uuid}/cancel':
+    $ref: 'paths/ride@{ride_uuid}@cancel.yaml'
+  '/ride/{ride_uuid}/last-ping':
+    $ref: 'paths/ride@{ride_uuid}@last-ping.yaml'
+  /customer:
+    $ref: paths/customer.yaml
+  '/customer/{customer_uuid}/restore':
+    $ref: 'paths/customer@{customer_uuid}@restore.yaml'
+  '/customer/{customer_uuid}':
+    $ref: 'paths/customer@{customer_uuid}.yaml'
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: 'https://virtserver.swaggerhub.com/lucasvillaverde2/robnerAPI/1.0'
+  - description: SwaggerHub API Auto Mocking
+    url: 'https://robner.aiqfome.com/api/1.0'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,278 @@
+post:
+  summary: Create ride
+  description: Create a new ride
+  parameters: []
+  tags:
+    - Ride
+  callbacks:
+    RideCreated:
+      YOUR_CALLBACK_URL:
+        post:
+          parameters:
+            - in: header
+              schema:
+                type: string
+              name: Signature
+              description: Webhook Signature
+              required: true
+          requestBody:
+            description: Webhook for ride created
+            content:
+              application/json:
+                schema:
+                  $ref: ../components/schemas/RideCreatedWebhook.yaml
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    type: string
+    RideStepCompleted:
+      YOUR_CALLBACK_URL:
+        post:
+          parameters:
+            - in: header
+              schema:
+                type: string
+              name: Signature
+              description: Webhook Signature
+              required: true
+          requestBody:
+            description: Webhook for ride created
+            content:
+              application/json:
+                schema:
+                  $ref: ../components/schemas/RideStepCompletedWebhook.yaml
+          responses:
+            '200':
+              description: OK
+    RideOrderDelivered:
+      YOUR_CALLBACK_URL:
+        post:
+          parameters:
+            - in: header
+              schema:
+                type: string
+              name: Signature
+              description: Webhook Signature
+              required: true
+          requestBody:
+            description: Webhook for ride created
+            content:
+              application/json:
+                schema:
+                  $ref: ../components/schemas/RideOrderDeliveredWebhook.yaml
+          responses:
+            '200':
+              description: OK
+  requestBody:
+    description: Required values to create a ride.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            callback_url:
+              type: string
+            country:
+              type: object
+              properties:
+                type:
+                  type: string
+                example:
+                  type: string
+              required:
+                - type
+                - example
+            customer_uuid:
+              type: object
+              properties:
+                type:
+                  type: string
+                example:
+                  type: string
+              required:
+                - type
+                - example
+            orders:
+              type: object
+              properties:
+                type:
+                  type: string
+                example:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      destination:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          phones:
+                            type: string
+                          address:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                              street:
+                                type: string
+                              postal_code:
+                                type: string
+                              number:
+                                type: string
+                              complement:
+                                type: string
+                              latitude:
+                                type: string
+                              longitude:
+                                type: string
+                              reference:
+                                type: string
+                              neighborhood:
+                                type: string
+                              city:
+                                type: string
+                              region:
+                                type: string
+                            required:
+                              - type
+                              - street
+                              - postal_code
+                              - number
+                              - complement
+                              - latitude
+                              - longitude
+                              - reference
+                              - neighborhood
+                              - city
+                              - region
+                        required:
+                          - name
+                          - phones
+                          - address
+                      number:
+                        type: string
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            quantity:
+                              type: integer
+                            size:
+                              type: string
+                          required:
+                            - name
+                            - quantity
+                            - size
+                      obs:
+                        type: string
+                      amount_total:
+                        type: integer
+                      payment_method:
+                        type: integer
+                    required:
+                      - destination
+                      - number
+                      - items
+                      - obs
+                      - amount_total
+                      - payment_method
+              required:
+                - type
+                - example
+          required:
+            - country
+            - customer_uuid
+            - orders
+        example:
+          country:
+            type: string
+            example: BR
+          customer_uuid:
+            type: string
+            example: 2c91235b-acc0-4e4f-8653-69eb1670cb71
+          orders:
+            type: array
+            example:
+              - destination:
+                  name: Steph Gomides
+                  phones: 44 998123456
+                  address:
+                    type: object
+                    street: av pintassilgo
+                    postal_code: '871234546'
+                    number: '286'
+                    complement: barracão aiqfome
+                    latitude: '-23.1234567'
+                    longitude: '-51.1234567'
+                    reference: sede do aiqfome
+                    neighborhood: PARQUE DAS LARANJEIRAS
+                    city: MARINGÁ
+                    region: BR.PR
+                number: '1231231'
+                items:
+                  - name: Salgado de frango
+                    quantity: 3
+                    size: médio
+                  - name: Água com gás
+                    quantity: 1
+                    size: 500ml
+                  - name: Salgado de carne
+                    quantity: 1
+                    size: grande
+                  - name: Trident
+                    quantity: 1
+                    size: 10gr
+                obs: ''
+                amount_total: 40
+                payment_method: 3
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              data:
+                type: object
+                properties:
+                  ride_uuid:
+                    type: string
+                    example: 3d123d51-665b-11eb-a400-06f3f99250a0
+                  cost:
+                    type: integer
+                    example: 5
+                  orders:
+                    type: array
+                    example:
+                      - id: 2062
+                        number: AE123
+                    items: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnauthorized.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnprocessableEntity.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorInternalServerError.yaml

@@ -1,0 +1,85 @@
+post:
+  summary: Cancel a ride
+  parameters:
+    - in: path
+      name: ride_uuid
+      required: true
+      description: Unique ride identifier
+      schema:
+        type: string
+  tags:
+    - Ride
+  callbacks:
+    RideCancelled:
+      YOUR_CALLBACK_URL:
+        post:
+          parameters:
+            - in: header
+              schema:
+                type: string
+              name: Signature
+              description: Webhook Signature
+              required: true
+          requestBody:
+            description: Webhook for ride created
+            content:
+              application/json:
+                schema:
+                  $ref: ../components/schemas/RideCancelledWebhook.yaml
+          responses:
+            '200':
+              description: OK
+    RideRecreated:
+      YOUR_CALLBACK_URL:
+        post:
+          parameters:
+            - in: header
+              schema:
+                type: string
+              name: Signature
+              description: Webhook Signature
+              required: true
+          requestBody:
+            description: Webhook for ride created
+            content:
+              application/json:
+                schema:
+                  $ref: ../components/schemas/RideRecreatedWebhook.yaml
+          responses:
+            '200':
+              description: OK
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Ride 3123sd521-6d3d-11eb-a400-06f3f99250a0 canceled
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnauthorized.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorUnprocessableEntity.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ErrorInternalServerError.yaml
