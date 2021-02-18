@@ -9,7 +9,7 @@
   "scripts": {
     "start": "openapi preview-docs",
     "build": "openapi bundle -o dist && npm run generate-docs",
-    "generate-docs": "rm -rf docs && mkdir docs && cd docs/ && redoc-cli bundle ../dist.yaml",
+    "generate-docs": "rm -rf docs && mkdir docs && cd docs/ && redoc-cli bundle ../dist.yaml && mv redoc-static.html index.html",
     "test": "openapi lint",
     "deploy": "npm run build"
   }
