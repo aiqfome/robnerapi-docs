@@ -9,6 +9,7 @@ post:
       YOUR_CALLBACK_URL:
         post:
           summary: RideCreatedWebhook
+          description: Webhook triggered when ride was created successfully.
           parameters:
             - in: header
               schema:
@@ -31,8 +32,9 @@ post:
                     type: string
     RideStepCompleted:
       YOUR_CALLBACK_URL:
-        post:
+        post:          
           summary: RideStepCompletedWebhook
+          description: Webhook triggered when driver has completed a ride step.
           parameters:
             - in: header
               schema:
@@ -53,6 +55,7 @@ post:
       YOUR_CALLBACK_URL:
         post:
           summary: RideOrderDeliveredWebhook
+          description: Webhook triggered when driver has delivered a specific order.
           parameters:
             - in: header
               schema:
@@ -83,21 +86,15 @@ post:
               properties:
                 type:
                   type: string
-                example:
-                  type: string
               required:
                 - type
-                - example
             customer_uuid:
               type: object
               properties:
                 type:
                   type: string
-                example:
-                  type: string
               required:
                 - type
-                - example
             orders:
               type: object
               properties:

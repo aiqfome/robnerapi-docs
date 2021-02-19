@@ -14,6 +14,7 @@ post:
       YOUR_CALLBACK_URL:
         post:
           summary: RideCancelledWebhook
+          description: Webhook triggered when driver was cancelled successfully.
           parameters:
             - in: header
               schema:
@@ -34,6 +35,7 @@ post:
       YOUR_CALLBACK_URL:
         post:
           summary: RideRecreatedWebhook
+          description: Webhook triggered when driver was cancelled and recreated successfully.
           parameters:
             - in: header
               schema:
