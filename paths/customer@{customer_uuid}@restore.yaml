@@ -68,6 +68,7 @@ patch:
               - success
               - data
             example:
+              success: true
               data:
                 address_id: 12
                 city_id: 1
@@ -80,8 +81,7 @@ patch:
                 name: Restaurante Exemplo
                 percentual_tax: 0.05
                 phones: '+5542991044321, +554236238320'
-                updated_at: '2020-04-06T14:41:50.000000Z'
-              success: true
+                updated_at: '2020-04-06T14:41:50.000000Z'              
     '401':
       description: Unauthorized
       content:

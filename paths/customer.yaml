@@ -556,18 +556,20 @@ put:
             country:
               type: string
           example:
-            address:
-              city: MARINGÁ
-              complement: sala 502
-              neighborhood: ZONA 7
-              number: '123'
-              postal_code: '87020220'
-              reference: Teste
-              region: BR.PR
-              street: RUA PARANAGUA
-            country: BR
-            document_number: '06604325000160'
-            name: Restaurante Exemplo 2
+            success: true
+            data:
+              address:
+                city: MARINGÁ
+                complement: sala 502
+                neighborhood: ZONA 7
+                number: '123'
+                postal_code: '87020220'
+                reference: Teste
+                region: BR.PR
+                street: RUA PARANAGUA
+              country: BR
+              document_number: '06604325000160'
+              name: Restaurante Exemplo 2
   responses:
     '200':
       description: Customer successfully updated
@@ -895,6 +897,7 @@ put:
               - success
               - data
             example:
+              success: true
               data:
                 address:
                   complement: apt 603
@@ -992,8 +995,7 @@ put:
                 name: Restaurante Exemplo 2
                 percentual_tax: 0.05
                 phones: '+5542991044321,+554236238320'
-                updated_at: '2020-04-06T13:07:50.000000Z'
-              success: true
+                updated_at: '2020-04-06T13:07:50.000000Z'            
     '401':
       description: Unauthorized
       content:
