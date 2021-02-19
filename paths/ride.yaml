@@ -79,159 +79,166 @@ post:
         schema:
           type: object
           properties:
-            callback_url:
-              type: string
             country:
-              type: object
-              properties:
-                type:
-                  type: string
-              required:
-                - type
+              type: string
             customer_uuid:
-              type: object
-              properties:
-                type:
-                  type: string
-              required:
-                - type
+              type: string
             orders:
-              type: object
-              properties:
-                type:
-                  type: string
-                example:
-                  type: array
-                  items:
+              type: array
+              items:
+              - type: object
+                properties:
+                  destination:
                     type: object
                     properties:
-                      destination:
+                      name:
+                        type: string
+                      phones:
+                        type: string
+                      address:
                         type: object
                         properties:
-                          name:
+                          street:
                             type: string
-                          phones:
+                          postal_code:
                             type: string
-                          address:
-                            type: object
-                            properties:
-                              type:
-                                type: string
-                              street:
-                                type: string
-                              postal_code:
-                                type: string
-                              number:
-                                type: string
-                              complement:
-                                type: string
-                              latitude:
-                                type: string
-                              longitude:
-                                type: string
-                              reference:
-                                type: string
-                              neighborhood:
-                                type: string
-                              city:
-                                type: string
-                              region:
-                                type: string
-                            required:
-                              - type
-                              - street
-                              - postal_code
-                              - number
-                              - complement
-                              - latitude
-                              - longitude
-                              - reference
-                              - neighborhood
-                              - city
-                              - region
+                          number:
+                            type: string
+                          complement:
+                            type: string
+                          latitude:
+                            type: string
+                          longitude:
+                            type: string
+                          reference:
+                            type: string
+                          neighborhood:
+                            type: string
+                          city:
+                            type: string
+                          region:
+                            type: string
                         required:
-                          - name
-                          - phones
-                          - address
-                      number:
-                        type: string
-                      items:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            name:
-                              type: string
-                            quantity:
-                              type: integer
-                            size:
-                              type: string
-                          required:
-                            - name
-                            - quantity
-                            - size
-                      obs:
-                        type: string
-                      amount_total:
-                        type: integer
-                      payment_method:
-                        type: integer
+                        - street
+                        - postal_code
+                        - number
+                        - complement
+                        - latitude
+                        - longitude
+                        - reference
+                        - neighborhood
+                        - city
+                        - region
                     required:
-                      - destination
-                      - number
-                      - items
-                      - obs
-                      - amount_total
-                      - payment_method
-              required:
-                - type
-                - example
+                    - name
+                    - phones
+                    - address
+                  number:
+                    type: string
+                  items:
+                    type: array
+                    items:
+                    - type: object
+                      properties:
+                        name:
+                          type: string
+                        quantity:
+                          type: integer
+                        size:
+                          type: string
+                      required:
+                      - name
+                      - quantity
+                      - size
+                    - type: object
+                      properties:
+                        name:
+                          type: string
+                        quantity:
+                          type: integer
+                        size:
+                          type: string
+                      required:
+                      - name
+                      - quantity
+                      - size
+                    - type: object
+                      properties:
+                        name:
+                          type: string
+                        quantity:
+                          type: integer
+                        size:
+                          type: string
+                      required:
+                      - name
+                      - quantity
+                      - size
+                    - type: object
+                      properties:
+                        name:
+                          type: string
+                        quantity:
+                          type: integer
+                        size:
+                          type: string
+                      required:
+                      - name
+                      - quantity
+                      - size
+                  obs:
+                    type: string
+                  amount_total:
+                    type: integer
+                  payment_method:
+                    type: integer
+                required:
+                - destination
+                - number
+                - items
+                - obs
+                - amount_total
+                - payment_method
           required:
-            - country
-            - customer_uuid
-            - orders
-        example:
-          country:
-            type: string
-            example: BR
-          customer_uuid:
-            type: string
-            example: 2c91235b-acc0-4e4f-8653-69eb1670cb71
-          orders:
-            type: array
-            example:
-              - destination:
-                  name: Steph Gomides
-                  phones: 44 998123456
-                  address:
-                    type: object
-                    street: av pintassilgo
-                    postal_code: '871234546'
-                    number: '286'
-                    complement: barracão aiqfome
-                    latitude: '-23.1234567'
-                    longitude: '-51.1234567'
-                    reference: sede do aiqfome
-                    neighborhood: PARQUE DAS LARANJEIRAS
-                    city: MARINGÁ
-                    region: BR.PR
-                number: '1231231'
-                items:
-                  - name: Salgado de frango
-                    quantity: 3
-                    size: médio
-                  - name: Água com gás
-                    quantity: 1
-                    size: 500ml
-                  - name: Salgado de carne
-                    quantity: 1
-                    size: grande
-                  - name: Trident
-                    quantity: 1
-                    size: 10gr
-                obs: ''
-                amount_total: 40
-                payment_method: 3
+          - country
+          - customer_uuid
+          - orders
+          example:
+          - country: BR
+            customer_uuid: 2c12312b-acc0-4e4f-8653-69eb1670cb71
+            orders:
+            - destination:
+                name: Jorge Gomides
+                phones: 44 998123455
+                address:
+                  street: av pintassilgo
+                  postal_code: '87383123'
+                  number: '123'
+                  complement: barracão aiqfome
+                  latitude: "-23.1234"
+                  longitude: "-51.12354"
+                  reference: sede do aiqfome
+                  neighborhood: PARQUE DE MARINGÁ
+                  city: MARINGÁ
+                  region: BR.PR
+              number: '1231231'
+              items:
+              - name: Salgado de frango
+                quantity: 3
+                size: médio
+              - name: Água com gás
+                quantity: 1
+                size: 500ml
+              - name: Salgado de carne
+                quantity: 1
+                size: grande
+              - name: Trident
+                quantity: 1
+                size: 10gr
+              obs: ''
+              amount_total: 40
+              payment_method: 3
+
   responses:
     '200':
       description: OK
